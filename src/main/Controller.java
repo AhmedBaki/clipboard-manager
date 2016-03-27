@@ -1,10 +1,7 @@
 package main;
 
-import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.IOException;
 
 public class Controller {
 
@@ -21,6 +18,7 @@ public class Controller {
 
 		Thread clipboard = new Thread() {
 
+			@Override
 			public void run() {
 
 				while (true) { // add a new entry if the clipboard has changed
@@ -38,7 +36,8 @@ public class Controller {
 
 						for (int i = 0; i < stack.size(); i++) {
 
-							if (((Entry) stack.get(i)).getContents().equals(data)) {
+							if (((Entry) stack.get(i)).getContents().equals(
+									data)) {
 
 								stack.remove(i);
 								stack.push(new Entry(data));
@@ -55,6 +54,7 @@ public class Controller {
 
 		Thread keyboard = new Thread() {
 
+			@Override
 			public void run() {
 
 				while (true) {

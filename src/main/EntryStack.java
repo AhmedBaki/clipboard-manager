@@ -14,18 +14,6 @@ public class EntryStack extends Stack {
 
 	}
 
-	public void contains(String data) {
-
-		for (int i = 0; i < this.size(); i++) {
-
-			if (((Entry) this.get(i)).getContents() == data) {
-
-			}
-
-		}
-
-	}
-
 	public void addDataToContent(String data) {
 		allContent.add(data);
 	}
