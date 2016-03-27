@@ -14,14 +14,6 @@ public final class ClipboardManager implements ClipboardOwner
 	//Constructor
 	public ClipboardManager()
 	{
-		ClipboardManager clipboardManager = new ClipboardManager();
-
-		//display what is currently on the clipboard
-		System.out.println("Clipboard contains:" + clipboardManager.getClipboard());
-
-		//change the contents and then re-display
-		clipboardManager.setClipboard("blah, blah, blah");
-		System.out.println("Clipboard contains:" + clipboardManager.getClipboard());
   }
 
    /*
