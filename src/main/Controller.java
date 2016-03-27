@@ -1,4 +1,5 @@
 package main;
+
 import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.awt.datatransfer.DataFlavor;
@@ -21,29 +22,30 @@ public class Controller {
 
 			public void run() {
 
-				while (true) {   //add a new entry if the clipboard has changed
+				while (true) { // add a new entry if the clipboard has changed
 
-					try {
+					String data = getCurrentClipboard();
 
-						String data = (String) Toolkit.getDefaultToolkit()
-								.getSystemClipboard()
-								.getData(DataFlavor.stringFlavor);
+					if (!stack.getAllContent().contains(data)) {
 
-						Entry x = new Entry(data);						
-						
-						if (!stack.contains(x)) {
+						stack.push(new Entry(data));
+						stack.addDataToContent(data); // add the raw data
 
-							stack.push(x);
+					}
+
+					else { // data exists in stack, move it to top
+
+						for (int i = 0; i < stack.size(); i++) {
+
+							if (((Entry) stack.get(i)).getContents().equals(data)) {
+
+								stack.remove(i);
+								stack.push(new Entry(data));
+
+							}
 
 						}
 					}
-
-					catch (Exception e) {
-
-						e.printStackTrace();
-
-					}
-
 				}
 
 			}
@@ -69,9 +71,24 @@ public class Controller {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public void addToStack(Entry x) {
 
 		stack.push(x);
+
+	}
+
+	public String getCurrentClipboard() {
+
+		try {
+			return (String) Toolkit.getDefaultToolkit().getSystemClipboard()
+					.getData(DataFlavor.stringFlavor);
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 
 	}
 

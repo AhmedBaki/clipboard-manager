@@ -14,6 +14,22 @@ public class Entry {
 
 	}
 
+	public String getContents() {
+		return contents;
+	}
+
+	public void setContents(String contents) {
+		this.contents = contents;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
 	public static void main(String[] args) {
 
 		Entry x = new Entry("123");
