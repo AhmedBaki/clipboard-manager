@@ -2,26 +2,23 @@ package main;
 
 import java.time.LocalDateTime;
 
+public class Entry {
 
-public class Entry{
-	
 	String contents;
-	String source;
 	String time;
-	
-	public Entry(String data, String src){
-		
+
+	public Entry(String data) {
+
 		contents = data;
-		source = src;
 		time = "" + LocalDateTime.now();
-		
+
 	}
-	
+
 	public static void main(String[] args) {
-		
-		Entry x = new Entry("!23", "1232");
+
+		Entry x = new Entry("123");
 		System.out.println(x.time);
-		
+
 	}
-	
+
 }
