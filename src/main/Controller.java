@@ -9,9 +9,10 @@ import java.io.IOException;
 public class Controller {
 
 	EntryStack stack;
+	ClipboardManager clipboardManager; 
 
 	public Controller() {
-
+		clipboardManager = new ClipboardManager(); 
 		stack = new EntryStack();
 		listen();
 	}
@@ -98,8 +99,13 @@ public class Controller {
 
 	}
 
-	public void paste() {
+	public void paste(String entryData) {
 
+		clipboardManager.setClipboard(entryData); //transfer data into clipboard
+		
+		
+		//code to perform a paste instruction 
+		
 	}
 
 	public void clearStack() {
